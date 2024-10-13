@@ -1,23 +1,27 @@
+#pragma once
 #include <string>
 
 class token{
     protected:
-        enum type{
+        enum m_type{
             VARIABLE,
             OPERATOR,
-            KEY_WORD
+            KEY_WORD,
+            VALUE
         };
 
+
+    token::m_type type;
     std::string name;
 
     public:
-        token(token::type, std::string);
+        token(token::m_type, std::string);
         token(const token&);
         token(token&&);
-        ~token();
+        ~token() = default;
         token& operator=(const token&);
         token& operator=(token&&);
 
-        token::type getType();
-        std::string getName();
+        inline token::m_type getType();
+        inline std::string getName();
 };
